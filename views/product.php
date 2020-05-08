@@ -97,15 +97,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	      <!-- END NAVBAR LEFT -->
 
 	      <!-- CONTAINER PRODUCTS -->
-	      <?php
-					$Id = $_GET['Id'];
+
+	      <!-- POSIBLEMENTE HAY QUE BORRAR -->
+	      <!-- <?php
+					// $Id = $_GET['Id'];
 					
-					if (isset($Id)) {
-    			echo "<div class='IdCategoria' id='$Id' style='display:none'>$Id</div>";
-					}else{
-						echo "No hay productos disponibles";
-					}
-				?>
+					// if (isset($Id)) {
+    			// echo "<div class='IdCategoria' id='$Id' style='display:none'>$Id</div>";
+					// }else{
+					// 	echo "No hay productos disponibles";
+					// }
+				?> -->
+
 	      <div class="col-md-8 col-sm-8 women-dresses">
 	        <div class="women-set1">
 

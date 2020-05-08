@@ -1,25 +1,66 @@
   	<!-- MODELS PHP -->
   	<?php
+		session_start();
+			  
 	    include_once('../models/modelCategoriaD.php');
 	    include_once('../models/modelCategoriaH.php');
 	  ?>
   	<!-- END MODELS PHP -->
-  	<div class="header-top-w3layouts">
-  	  <div class="container">
+  	<div class="container">
+  	  <nav class="navbar navbar-light">
   	    <div class="col-md-6 logo-w3">
   	      <a href="index.php"><img src="images/logo2.png" alt=" " />
-  	        <h1>FOOTWEAR<span>LINE</span></h1>
+  	        <h1 style="height: 50px; line-height: 50px; font-size: 30px;">FOOTWEAR<span>LINE</span></h1>
   	      </a>
   	    </div>
-  	    <div class="col-md-6 phone-w3l">
-  	      <ul>
-  	        <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-  	        <li>+18045403380</li>
-  	      </ul>
+  	    <div class="navbar-header nav_2">
+  	      <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+  	        data-target="#bs-megadropdown-tabs">
+  	        <span class="sr-only">Toggle navigation</span>
+  	        <span class="icon-bar"></span>
+  	        <span class="icon-bar"></span>
+  	        <span class="icon-bar"></span>
+  	      </button>
   	    </div>
-  	    <div class="clearfix"></div>
-  	  </div>
+  	    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="float: right;">
+  	      <?php
+  	      if(isset($_SESSION['user'])){ ?>
+  	      <ul class="nav navbar-nav ">
+  	        <li class="dropdown ">
+  	          <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown">
+  	            <span> <?php print_r( $_SESSION['user']); ?> <b class="caret"></b>
+  	            </span>
+  	          </a>
+  	          <ul class="dropdown-menu multi2">
+  	            <div class="row">
+  	              <div class="col-md-12">
+  	                <ul class="multi-column-dropdown">
+  	                  <!-- MONSTRAMOS LAS CATEGORIAS DIRECTAMENTE DE LA BASE DE DATOS -->
+  	                  <li>
+  	                    <a href="../models/cerrarSesion.php">
+  	                      Cerrar Sesion
+  	                    </a>
+  	                  </li>
+  	                </ul>
+  	              </div>
+  	              <div class="clearfix"></div>
+  	            </div>
+  	          </ul>
+  	        </li>
+  	      </ul>
+  	      <?php
+  	      }else{
+						echo "
+						 <ul class='nav navbar-nav'>
+  	        		<li><a href='login.php'>Iniciar Sesion</a></li>
+  	      	 </ul>
+						";
+					}
+					?>
+  	    </div>
+  	  </nav>
   	</div>
+
   	<div class="header-bottom-w3ls">
   	  <div class="container">
   	    <div class="col-md-7 navigation-agileits">

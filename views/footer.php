@@ -2,7 +2,7 @@
     <div class="container">
       <div class="col-md-3 footer-grids fgd1">
         <a href="index.html"><img src="images/logo2.png" alt=" " />
-          <h3>FASHION<span>CLUB</span></h3>
+          <h3 style="line-height: 30px; height: 30px; font-size: 30px;">FOOTWEAR<span>LINE</span></h3>
         </a>
         <ul>
           <li>1234k Avenue, 4th block,</li>
@@ -36,7 +36,7 @@
         <h4>My Account</h4>
         <ul>
 
-          <li><a href="login.html">Login</a></li>
+          <li><a href="login.php">Login</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="recommended.html">Recommended </a></li>
           <li><a href="payment.html">Payments</a></li>
