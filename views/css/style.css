@@ -151,7 +151,7 @@ img {
 	   background-color:#00e58b;
 }
 .dropdown-menu.multi {
-    min-width: 745px;
+    min-width: 500px;
     padding: 30px 30px;
 }
 .multi-column-dropdown li a {
