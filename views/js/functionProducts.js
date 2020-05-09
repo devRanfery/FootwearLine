@@ -6,7 +6,7 @@ const imprimirProductos = (productList) => {
 
 		$(".women-dresses .women-set1").append(
 			`
-						<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" data-product-key="${value.Id}">
+						<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" data-product-key="${value.Id}" style="margin-bottom: 30px;">
 							<a href="details.php?Id=${value.Id}"><div class="product-img">
 								<img src="${value.Imagen}" alt="" />
 								<div class="p-mask">

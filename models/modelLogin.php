@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-	require("../db/conect_db.php");
+	require_once("../db/conect_db.php");
 
 	$username=$_POST['email'];
 	$pass=$_POST['password'];
@@ -16,7 +16,7 @@ session_start();
 			$_SESSION['rol']=$f2['rol'];
 
 			echo '<script>alert("BIENVENIDO ADMINISTRADOR")</script> ';
-			echo "<script>location.href='../index.php'</script>";
+			echo "<script>location.href='../admin/productos.php'</script>";
 		
 		}
 	}
@@ -35,7 +35,7 @@ session_start();
 		}else{
 			echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
 		
-			echo "<script>location.href='inicios.html'</script>";
+			echo "<script>location.href='login.php'</script>";
 		}
 	}else{
 		

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 02, 2020 at 07:43 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-05-2020 a las 03:09:28
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `footwear_line`
+-- Base de datos: `footwear_line`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorias`
+-- Estructura de tabla para la tabla `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -35,7 +35,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `categorias`
+-- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`Id_Cat`, `Descripcion`, `Genero`) VALUES
@@ -54,12 +54,14 @@ INSERT INTO `categorias` (`Id_Cat`, `Descripcion`, `Genero`) VALUES
 (25, 'Casual', 'CABALLERO'),
 (26, 'Confort', 'CABALLERO'),
 (27, 'De Vestir', 'CABALLERO'),
-(28, 'Escolar', 'CABALLERO');
+(28, 'Escolar', 'CABALLERO'),
+(39, 'perro', 'CABALLERO'),
+(40, 'perra', 'DAMA');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Estructura de tabla para la tabla `login`
 --
 
 CREATE TABLE `login` (
@@ -72,7 +74,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `login`
+-- Volcado de datos para la tabla `login`
 --
 
 INSERT INTO `login` (`id`, `user`, `password`, `email`, `pasadmin`, `rol`) VALUES
@@ -81,12 +83,13 @@ INSERT INTO `login` (`id`, `user`, `password`, `email`, `pasadmin`, `rol`) VALUE
 (4, 'joseph', '12345', 'joseph@gmail.com', '', 2),
 (6, 'perlaarroyo', '123456', 'perla@hotmail.com', '', 2),
 (7, 'abril arroyo', '123456', 'abril28@hotmail.com', '', 2),
-(8, 'fernando caciano', '123456', 'fernando@gmail.com', '', 2);
+(8, 'fernando caciano', '123456', 'fernando@gmail.com', '', 2),
+(9, 'Ranfery Alvarez', 'ranfery', 'ranfery_99@hotmail.com', '', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productos`
+-- Estructura de tabla para la tabla `productos`
 --
 
 CREATE TABLE `productos` (
@@ -100,7 +103,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `productos`
+-- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`Id`, `N_Producto`, `Descripcion`, `Precio`, `Imagen`, `Estatus`, `Id_Cat`) VALUES
@@ -109,59 +112,60 @@ INSERT INTO `productos` (`Id`, `N_Producto`, `Descripcion`, `Precio`, `Imagen`, 
 (11, 'Tacon aguja', 'jkn gjanflflanflkewmnflksdlsnfldsnfklsndflkn lkdlknflksnfklndslfknsdlfksdnflkdsnfsdlk cslkdnfsdl flskd fklsdlk lsd c slkc', 20, 'images/cp1.jpg\r\n	', 1, 5),
 (12, 'llll', 'DESQ--', 80, 'images/c2.png\r\n	', 1, 7),
 (13, 'nuevaprueba', 'jkn gjanflflanflkewmnflksdlsnfldsnfklsndflkn lkdlknflksnfklndslfknsdlfksdnflkdsnfsdlk cslkdnfsdl flskd fklsdlk lsd c slkc', 1000, 'images/shp4.jpg\r\n	', 1, 5),
-(14, 'MeLaPela', 'DESQ', 20, 'images/c1.png\r\n	', 1, 5);
+(15, 'Chocolate', 'nljfdnfjnsfjs vsjfnlfnslfkndlfjkjkdjddjjd', 3000, 'images/cp7.jpg\r\n	', 1, 5),
+(16, 'kaka', 'jjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjffjfjfjfjfjfjfjfjfjfjfjfjfjffjfjfjfjfjfjfjf', 5000, 'images/hcp8.jpg\r\n	', 1, 5);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `categorias`
+-- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`Id_Cat`);
 
 --
--- Indexes for table `login`
+-- Indices de la tabla `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `productos`
+-- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id_Cat` (`Id_Cat`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `categorias`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `Id_Cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `Id_Cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `productos`
+-- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `productos`
+-- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`Id_Cat`) REFERENCES `categorias` (`Id_Cat`);

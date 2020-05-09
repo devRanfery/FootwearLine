@@ -9,7 +9,7 @@
   	<div class="container">
   	  <nav class="navbar navbar-light">
   	    <div class="col-md-6 logo-w3">
-  	      <a href="index.php"><img src="images/logo2.png" alt=" " />
+  	      <a href="index.php"><img src="images//logo/logo2.png" alt=" " />
   	        <h1 style="height: 50px; line-height: 50px; font-size: 30px;">FOOTWEAR<span>LINE</span></h1>
   	      </a>
   	    </div>
