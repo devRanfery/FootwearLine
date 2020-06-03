@@ -3,7 +3,7 @@
 
 	//OBTENER LOS DATOS DEL FORMULARIO
 	$id = $_POST['id'];
-	$sql = "DELETE FROM productos WHERE Id = '$id'";
+	$sql = "DELETE FROM categorias WHERE Id_Cat = '$id'";
 
 	$consulta = mysqli_query($conexion, $sql);
 

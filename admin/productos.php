@@ -8,6 +8,9 @@ $query=mysqli_query($conexion,$sql);
 $sql2="SELECT * FROM categorias";
 $categorias = mysqli_query($conexion,$sql2);
 
+$sql3="SELECT * FROM categorias";
+$categorias2 = mysqli_query($conexion,$sql3);
+
  ?>
 
 <!DOCTYPE html>
@@ -27,8 +30,9 @@ $categorias = mysqli_query($conexion,$sql2);
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 
 
 </head>
@@ -73,23 +77,24 @@ include_once('aside.php')
           </div>
           <br><br>
           <div class="row">
-            <table class="table table-responsive">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Categoria</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Imagen</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
+            <div class="col-md-12">
+              <table class="table table-responsive table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
 
-                </tr>
-              </thead>
-              <tbody>
-                <?php 
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
                 while($arreglo=mysqli_fetch_array($query)){
                     echo "<tr class='success'>";
                       echo "<td>$arreglo[Id]</td>";
@@ -99,13 +104,14 @@ include_once('aside.php')
                       echo "<td>$arreglo[Id_Cat]</td>";  
                       echo "<td>$arreglo[Descripcion]</td>"; 
                       echo "<td><img src='../views/$arreglo[Imagen]' width='50px' height='50px'></td>"; 
-                      echo "<td><button class='btn btn-success btn-update' id='$arreglo[Id]'><i class='fas fa-edit'></i></button></td>";
+                      echo "<td><button class='btn btn-success btn-update' id='$arreglo[Id]' data-toggle='modal' data-target='#UpdateProduct'><i class='fas fa-edit'></i></button></td>";
                       echo "<td><button class='btn btn-danger btn-delete' id='$arreglo[Id]'><i class='fas fa-trash-alt'></i></button></td>";
                     echo "</tr>";
                 }
                ?>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -114,7 +120,7 @@ include_once('aside.php')
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Modal agregar nuevo producto -->
+    <!--MODAL SAVE PRODUCT -->
     <div class="modal fade" id="SaveProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -140,7 +146,6 @@ include_once('aside.php')
                 <input type="text" class="form-control" name="nPrecio">
               </div>
               <div class="form-group">
-                <div class="btn btn-primary"> </div>
                 <label>Categoria</label>
                 <select class="form-control" name="nCategoria">
                   <!-- <small class="btn-primary"> </small> -->
@@ -148,7 +153,7 @@ include_once('aside.php')
                   <?php 
                       while($Cat=mysqli_fetch_array($categorias)){
                         
-                        echo "<option value=$Cat[Id_Cat]>$Cat[Descripcion] <div class='btn btn-primary'>$Cat[Genero] </div></option>";
+                        echo "<option value=$Cat[Id_Cat]>$Cat[Descripcion]<div class='btn btn-primary'>$Cat[Genero] </div></option>";
                       }
 
                     ?>
@@ -177,6 +182,66 @@ include_once('aside.php')
         </div>
       </div>
     </div>
+    <!-- END MODAL SAVE PRODUCT -->
+
+    <!-- MODA UPDATE PRODUCT -->
+    <div class="modal fade" id="UpdateProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Actualizar Producto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="updateProduct.php" method="POST">
+              <input type="text" id="id-p" name="nId" style="display:none;">
+              <div class="form-group">
+                <label>Nombre del producto</label>
+                <input type="text" class="form-control" id="nombre-p" name="nProducto">
+              </div>
+              <div class="form-group">
+                <label>Descripcion</label>
+                <input type="text" class="form-control" id="descripcion-p" name="nDescripcion">
+              </div>
+              <div class="form-group">
+                <label>Precio</label>
+                <input type="text" class="form-control" id="precio-p" name="nPrecio">
+              </div>
+              <div class="form-group">
+                <label>Categoria</label>
+                <select class="form-control" id="categoria-p" name="nCategoria">
+                  <?php 
+                      while($Cate=mysqli_fetch_array($categorias2)){
+                        
+                        echo "<option value=$Cate[Id_Cat]>$Cate[Descripcion] <div class='btn btn-primary'>$Cate[Genero] </div></option>";
+                      }
+
+                    ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Estado</label>
+                <select class="form-control" id="estado-p" name="nEstado">
+                  <option value="1">Activo</option>
+                  <option value="0">Inactivo</option>
+                </select>
+              </div>
+              <label>Imagen</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="imagen-p" name="nImagen">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+              </div>
+              <br><br>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL UDPTE PRODUCT -->
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -203,7 +268,26 @@ include_once('aside.php')
   $(document).ready(function() {
     $('.btn-update').click(function() {
       var id = $(this).attr('id')
-      alert(id)
+      var dataS = 'id=' + id;
+      $.ajax({
+        type: "POST",
+        url: "../models/AjaxUpdateProduct.php",
+        data: dataS,
+        success: function(response) {
+          data = $.parseJSON(response);
+          console.log(data)
+          if (data.length > 0) {
+            $('#id-p').val(data[0]['Id']);
+            $('#nombre-p').val(data[0]['N_Producto']);
+            $('#descripcion-p').val(data[0]['Descripcion']);
+            $('#precio-p').val(data[0]['Precio']);
+            $('#imagen-p').val(data[0]['Imagen']);
+            $('#estado-p').val(data[0]['Estatus']);
+            $('#categoria-p').val(data[0]['Id_Cat']);
+          }
+        }
+
+      });
     });
   });
 
@@ -211,20 +295,16 @@ include_once('aside.php')
   $(document).ready(function() {
     $('.btn-delete').click(function() {
       var id = $(this).attr('id')
-      // alert(id)
-
+      var dataD = 'id=' + id
       $.ajax({
         url: 'deleteProduct.php',
-        data: {
-          id: id
-        },
+        data: dataD,
         type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-          alert('Bien')
+        success: function(response) {
+          location.reload();
+          alert('Se le elimino correctamente')
         }
       });
-
     });
   });
   </script>

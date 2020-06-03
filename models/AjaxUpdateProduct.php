@@ -1,4 +1,6 @@
 <?php 
+
+
 	require("../db/conect_db.php");
 
 	//OBTENER LOS DATOS DEL FORMULARIO

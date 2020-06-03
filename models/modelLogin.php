@@ -35,7 +35,7 @@ session_start();
 		}else{
 			echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
 		
-			echo "<script>location.href='login.php'</script>";
+			echo "<script>location.href='../views/login.php'</script>";
 		}
 	}else{
 		
